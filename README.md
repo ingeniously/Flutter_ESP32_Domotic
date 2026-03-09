@@ -1,138 +1,139 @@
- # Youtube Demo 
+# ESP32 for Domotic with Google Cloud Service firebase and Flutter app 
 
 [![](https://markdown-videos.deta.dev/youtube/xkLEQ8njIVo)](https://youtu.be/xkLEQ8njIVo)
 
 
 >## Description
 ***
-Ce projet nommé energyzium sert à :
-1. Commander des appareils domotique(Lampe,Store,Fan...) avec une application mobile développer avec flutter SDK sur VS code. 
-2. Recevoir le feedback et l'afficher sur l'application mobile selon la valeur du courant.
-3. Mesurer le courant puis calculer la consommation Energétique et l'afficher sur l'application
+This project named **ESP32 for Domotic with Google Cloud Service firebase and Flutter app** is used to:
+1. Control home automation devices (Lamp, Blinds, Fan...) with a mobile application developed with the Flutter SDK on VS Code. 
+2. Receive feedback and display it on the mobile application according to the current value.
+3. Measure the current then calculate the Energy consumption and display it on the application.
 
 
->## Matériels utilisés :
+>## Hardware used:
 
- 1. ESP8266 NodeMcu (12-E)
- 2. Convertisseur Analogique-SPI (MCP3002) on utilise la chaine(CH0)
- 3. Capteur de courant ACSP712 (30A)
- 4. Lampe d'éclairage & Relais 3.3V
->## Logiciel utilisé : 
+ 1. ESP8266 NodeMCU (12-E)
+ 2. Analog-SPI Converter (MCP3002) we use the channel (CH0)
+ 3. ACSP712 Current sensor (30A)
+ 4. Lighting lamp & 3.3V Relay
+
+>## Software used: 
 
 1. Arduino IDE 
-2. Vs Code
+2. VS Code
 3. Flutter 
 4. Android Studio 
 
 
->## Partie Serveurs :
+>## Server Part:
 
 
-Ce projet est connecté sur la base de données sous le nom keeper-connect du serveur firebase 
+This project is connected to the database under the name keeper-connect of the Firebase server.
 
-> ## Partie Wi-Fi 
+> ## Wi-Fi Part 
 
-La carte est connectée sur le Wi-Fi
-- SSID : Maker Lab 
-- WIFI_PASSWORD : ######
+The board is connected to the Wi-Fi
+- SSID: Maker Lab 
+- WIFI_PASSWORD: ######
 
-> ## Fonctionnement du Projets:
+> ## Project Operation:
 
 
-En premier lieu la carte commence à  lire la valeur du courant et calculer la consommation énergétique exprimée en KW puis selon cette valeur:
-- Si le courant = 0 : retour d'un feedback a l'état bas vers l'application qui montre que la lampe n'est pas activée
-- Si le courant > 0 : retour d'un feedback a état haut vers l'application qui montre que la lampe fonctionne bien
+First, the board starts reading the current value and calculates the energy consumption expressed in kW, then depending on this value:
+- If the current = 0: returns low-state feedback to the application showing that the lamp is not activated.
+- If the current > 0: returns high-state feedback to the application showing that the lamp is working properly.
 
-Ensuite le système permet de lire la valeur logique d'un bouton sur l'application afin de commander l'actionneur é travers le serveur firebase. 
+Then the system allows reading the logical value of a button on the application to control the actuator through the Firebase server. 
 
-> ## Architecture du projet :  
+> ## Project Architecture:  
 <div align="center"><img src="https://user-images.githubusercontent.com/93054393/187061146-6d996a2d-d211-415e-b0b4-c50d7d490f95.jpg" width="75%"></div>
-<div align="center"><i>Architecture du projet</i></div>
+<div align="center"><i>Project Architecture</i></div>
 
 
-> ## Partie Mobile 
+> ## Mobile Part 
 
-       Screen 1 : Accueil
+       Screen 1: Home
 <div align="center"><img src="https://user-images.githubusercontent.com/93054393/187058069-5d30a5cd-f875-4747-b83a-27ab4a0c03c2.jpg" width="20%"></div>
 <div align="center"><i>Screen 1</i></div>
 
-       Screen 2 : Contact sur les réseaux
+       Screen 2: Social media contact
 
 <div align="center"><img src="https://user-images.githubusercontent.com/93054393/187058071-fb233c67-cd75-4cd9-9c8f-5d517a4d5ff8.jpg" width="20%"></div>
 <div align="center"><i>Screen 2</i></div>
 
-       Screen 3 : Créer un compte si vous n'en disposer pas
+       Screen 3: Create an account if you don't have one
 
 <div align="center"><img src="https://user-images.githubusercontent.com/93054393/187058072-a32e4af1-4b48-4c64-bee4-510a82667c50.jpg" width="20%"></div>
 <div align="center"><i>Screen 3</i></div>
 
-      Screen 4 : Vérifier l'identité avec un Id et un Mot de passe déja  créer et stocker sur Firebase.
+       Screen 4: Verify identity with an ID and Password already created and stored on Firebase.
 
 <div align="center"><img src="https://user-images.githubusercontent.com/93054393/187058075-ee6a14d9-87bc-49c2-942e-5ca3f0d909d4.jpg" width="20%"></div>
 <div align="center"><i>Screen 4</i></div>
 
 
-        Screen 5 : Image cliquable pour entrer dans une des salles de la maison et commander les appareils
+        Screen 5: Clickable image to enter one of the rooms in the house and control the devices.
 
 
 <div align="center"><img src="https://user-images.githubusercontent.com/93054393/187058079-25b35a41-f17b-43e0-b09b-5c2e9b489cdf.jpg" width="20%"></div>
 <div align="center"><i>Screen 5</i></div>
 
-       Screen 6 : Bouton pour l'envoi de commande sur Firebase et image qui affiche l'état du feedback selon le fonctionnement ou non de chaque appareil
+       Screen 6: Button to send a command to Firebase and an image that displays the feedback status depending on whether each device is working or not.
 
 <div align="center"><img src="https://user-images.githubusercontent.com/93054393/187058082-8b33dcaf-f0e1-4f81-97bb-815ce1bdd3d4.jpg" width="20%"></div>
 <div align="center"><i>Screen 6</i></div>
 
-> ## Configuration du matériel :
+> ## Hardware Configuration:
 --------------------------------
 
-Cablage du montage (ESP8266 + MCP3002) :
+Wiring of the assembly (ESP8266 + MCP3002):
 
 
-|Nom du Pin |	MCP3002	   |ESP8266|
+|Pin Name |	MCP3002	   |ESP8266|
 |-|-|-|
 |CSS	|1	|D8|
 |MISO	|Dout (Pin6)	|D7|
 |MOSI	|Din  (Pin5)	|D7|
 |CLK	|7|	D5|
 
-###  Cablage du montage (ACS712 + MCP3002) :
+###  Wiring of the assembly (ACS712 + MCP3002):
 
 
-|Nom du Pin	|MCP3002	|ACS712|
+|Pin Name	|MCP3002	|ACS712|
 |-----|----|----|
 |DATA	|CH0 | (Pin2)|	
 
 
-Le cablage du Relais est avec le (pin D4)
-Installation des bibliothèques
-FirebaseArduino est une bibliothèque pour simplifier la connexion à la base de données Firebase à  partir des clients Arduino
- Il s'agit d'une abstraction complète de l'API REST de Firebase exposée via des appels C++ d'une manière conviviale. Toute l'analyse JSON est gérée par la bibliothèque et vous pouvez traiter des types C/Arduino purs.
-La bibliothèque ne peut pas fonctionner de manière autonome. Vous devez donc également ajouter la bibliothèque ArduinoJSON.
-Alors allez d'abord dans le gestionnaire de bibliothèque et recherchez "JSON" et installez la bibliothèque comme indiqué dans la figure ci-dessous
+The Relay wiring is with (pin D4).
+Libraries Installation:
+FirebaseArduino is a library to simplify the connection to the Firebase database from Arduino clients.
+It is a complete abstraction of the Firebase REST API exposed via C++ calls in a user-friendly way. All JSON parsing is handled by the library and you can process pure C/Arduino types.
+The library cannot work standalone. You must therefore also add the ArduinoJSON library.
+So first go to the library manager and search for "JSON" and install the library as shown in the figure below.
 
 ----------------------------------------------------------------------------
 
->## Remarque :
+>## Note:
 
 
-La dernière bibliothèque JSON peut ne pas fonctionner avec le code. Vous devrez donc peut-ètre rétrograder la bibliothèque vers la version v5.13.5
-Bibliothèque Google Firebase Extended
-Maintenant, vous devez également installer la bibliothèque Google Firebase. Alors, téléchargez la bibliothèque Firebase ESP8266 version 4.0.3
-Configuration de la base de données de la console Google Firebase
+The latest JSON library might not work with the code. You may need to downgrade the library to version v5.13.5.
+Google Firebase Extended Library:
+Now, you also need to install the Google Firebase library. So, download the Firebase ESP8266 library version 4.0.3.
+Google Firebase Console Database Configuration:
 
-Maintenant, la principale chose que nous devons faire est de configurer la base de données de la console Google Firebase. Une fois la configuration terminée, nous pouvons ensuite envoyer des données de capteur en temps réel à  Google Firebase avec Nodemcu ESP8266.
-Mais je n'expliquerai pas ici comment configurer la base de données de la console Google Firebase, car j'ai déjà  expliqué l'ensemble du processus dans le didacticiel précédent. Vous pouvez consulter le didacticiel suivant pour savoir comment effectuer la configuration.
+Now, the main thing we need to do is configure the Google Firebase console database. Once the setup is complete, we can then send real-time sensor data to Google Firebase with the NodeMCU ESP8266.
+But I won't explain here how to configure the Google Firebase console database, as I have already explained the whole process in the previous tutorial. You can check the following tutorial to know how to perform the setup.
 
-> ### ATTENTION !! :
+> ### WARNING !! :
 
-Pour que le système fonctionne il faut faire attention à  la compatibilité des versions des bibliothèque du firebase & ArduinoJson & ESP8266WiFi
+For the system to work, you must pay attention to the compatibility of the library versions of Firebase & ArduinoJson & ESP8266WiFi.
 
 * ArduinoJson (version 5.13.1)
 
 * Firebase ESP8266 client 4.0.3 
 
-* (gestionnaire des carte)
+* (board manager)
 
 * ESP8266 (version 2.3.0)
   
@@ -145,9 +146,9 @@ Pour que le système fonctionne il faut faire attention à  la compatibilité d
 
 
 
-> ## Partie Code : 
+> ## Code Part: 
 
-1. Tout d'abord, nous incluons la bibliothèque pour Firebase & MCP3XXX.h & SPI.h
+1. First of all, we include the library for Firebase & MCP3XXX.h & SPI.h
 
 ```Arduino
        #include <ESP8266WiFi.h>
@@ -157,7 +158,7 @@ Pour que le système fonctionne il faut faire attention à  la compatibilité d
        #include<SPI.h>
 ```
 
-2. Ensuite, nous définissons les deux paramètres FIREBASE_HOST & FIREBASE_AUTH . Nous obtenons ces paramètres à  partir de Google Firebase Setup. Ces deux paramètres sont très importants pour communiquer avec firebase. Cela permet l'échange de données entre l'ESP8266 et la firebase.
+2. Next, we define the two parameters FIREBASE_HOST & FIREBASE_AUTH. We obtain these parameters from the Google Firebase Setup. These two parameters are very important for communicating with Firebase. This allows data exchange between the ESP8266 and Firebase.
 
 ```Arduino
        #define FIREBASE_HOST "keeper-connect-default-rtdb.firebaseio.com"
@@ -166,7 +167,7 @@ Pour que le système fonctionne il faut faire attention à  la compatibilité d
 ```
 
 
-3. Ensuite, nous définissons le SSID et le mot de passe WiFi. Remplacez le SSID et le mot de passe par le SSID et le mot de passe de votre réseau. Le Nodemcu se connectera au réseau et communiquera avec Google Firewall.
+3. Then, we define the WiFi SSID and password. Replace the SSID and password with your network's SSID and password. The NodeMCU will connect to the network and communicate with the Google Firewall.
 
 ```Arduino
        #define WIFI_SSID "Maker Lab"
@@ -174,7 +175,7 @@ Pour que le système fonctionne il faut faire attention à  la compatibilité d
 
 ```
 
-4. déclaration des variables et des constatant.
+4. Declaration of variables and constants.
 
 ```Arduino
        MCP3002 adc;
@@ -185,7 +186,7 @@ Pour que le système fonctionne il faut faire attention à  la compatibilité d
        int sampleCount = 0;
        float vpc = 4.8828125;
 ```
-5. Dans le void Setup, nous commençons par la déclaration des pins SPI de la NodeMcu puis la vitesse de transmission (115200Kb/s) passant par la déclaration du Pin D4 comme sortie.
+5. In the void Setup, we start by declaring the NodeMCU SPI pins, then the baud rate (115200Kb/s), moving on to declaring Pin D4 as an output.
 
 ```Arduino
        void setup() 
@@ -193,7 +194,7 @@ Pour que le système fonctionne il faut faire attention à  la compatibilité d
        Serial.begin(115200);
        pinMode(D4, OUTPUT);    
 ```
-6. Ces lignes permettent de connecter la carte NodeMCU ESP8266 au réseau Wifi. Une fois connecté, le moniteur série affiche l'état de la connexion et imprime l'adresse IP.
+6. These lines allow connecting the NodeMCU ESP8266 board to the Wifi network. Once connected, the serial monitor displays the connection status and prints the IP address.
   ```Arduino
           WiFi.begin(WIFI_SSID, WIFI_PASSWORD);          
           Serial.print("Connecting to ");
@@ -209,7 +210,7 @@ Pour que le système fonctionne il faut faire attention à  la compatibilité d
           Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);  
           delay(1000);   
 ```
-7. dans le void Loop nous commençons par la conversion de chaque trame reçue a travers le SPI en valeur analogique pendant chaque période.
+7. In the void Loop we start by converting each frame received through the SPI into an analog value during each period.
 
 ```Arduino
          void loop() {
@@ -222,7 +223,7 @@ Pour que le système fonctionne il faut faire attention à  la compatibilité d
          lastsample = millis ();
          }
 ```
-8. pendant chaque nous tenons a convertir le courant efficace au courant nominal puis nous tenons a calucler le courant en divisant la valeur mesurer par le calibre du capteur.
+8. During each one we aim to convert the RMS current to nominal current, then we calculate the current by dividing the measured value by the sensor's rating.
 
 ```Arduino
          if (sampleCount == 1000)
@@ -235,14 +236,14 @@ Pour que le système fonctionne il faut faire attention à  la compatibilité d
          sampleCount = 0;  
 ```
 
-9. pour l'étalonnage du capteur nous avons utiliser un filtre passe bas avec une condition pour bloquer les petites valeurs du courant.
+9. For sensor calibration, we used a low pass filter with a condition to block small current values.
 ```Arduino
           if (amperage <0.2)
           {
           amperage =0;
 ```
 
-10. Nous envoyons maintenant les données à  Google Firebase en utilisant le chemin fourni par le code.
+10. We now send the data to Google Firebase using the path provided by the code.
 
 ```Arduino
          Firebase.setString("House/Salon/feedback_Lampe","LOW");
@@ -250,8 +251,8 @@ Pour que le système fonctionne il faut faire attention à  la compatibilité d
          Firebase.setFloat("House/Salon/Consommation_Lampe",amperage*220);
          int result = Firebase.getInt("House/Salon/switch");   
 ```
-11. La LED s'allumera/s'éteindra en fonction de la chaîne reçue comme "ON" ou "OFF respectivement. Si un autre caractère est envoyé, 
-Il s'agissait du contrôle des LED à  l'aide de Google Firebase. Maintenant, il y a un autre côté du tutoriel, que se passe-t-il si vous souhaitez envoyer les données du capteur à  Google Firebase.
+11. The LED will turn on/off depending on the received string like "ON" or "OFF" respectively. If another character is sent, 
+This was about LED control using Google Firebase. Now, there is another side to the tutorial: what happens if you want to send the sensor data to Google Firebase.
 
 ```Arduino
          int result = Firebase.getInt("House/Salon/switch");
@@ -265,85 +266,77 @@ Il s'agissait du contrôle des LED à  l'aide de Google Firebase. Maintenant, i
 ```
 
 
-Pour contrôler la LED à  l'aide de Google Firebase et Nodemcu ESP8266, vous devez d'abord configurer Google Firebase. L'étape est un peu longue mais pas de panique, car je vous ai expliqué toutes les étapes ci-dessous.
+To control the LED using Google Firebase and NodeMCU ESP8266, you must first configure Google Firebase. The step is a bit long but don't panic, as I have explained all the steps to you below.
 
-       Étape 1 : Si vous avez un identifiant Gmail, vous ètes déjà  inscrit à  Firebase. Mais si vous n'avez pas d'identifiant Gmail, inscrivez-vous d'abord à  Gmail : https://gmail.com/
+       Step 1: If you have a Gmail ID, you are already registered with Firebase. But if you don't have a Gmail ID, first sign up for Gmail: https://gmail.com/
 
-<div align="center"><img src="https://user-images.githubusercontent.com/93054393/187058090-b596c9f9-04a0-4b20-8534-e3089d514fe6.jpg" width=60%"></div>
-<div align="center"><i>Étape 1</i></div>
+<div align="center"><img src="https://user-images.githubusercontent.com/93054393/187058090-b596c9f9-04a0-4b20-8534-e3089d514fe6.jpg" width="60%"></div>
+<div align="center"><i>Step 1</i></div>
 
 
-       Étape 2 :  Visitez maintenant https://firebase.google.com/ et cliquez sur Aller à  la console en haut à  droite.
+       Step 2: Now visit https://firebase.google.com/ and click on Go to console at the top right.
 
 <div align="center"><img src="https://user-images.githubusercontent.com/93054393/187058093-bee594de-351b-4ef6-b905-32b6f5a6a8c4.jpg" width="60%"></div>
-<div align="center"><i>Étape 2</i></div>
+<div align="center"><i>Step 2</i></div>
 
-       Étape 3 : Cliquez sur "Créer un projet".
+       Step 3: Click on "Create a project".
 
 <div align="center"><img src="https://user-images.githubusercontent.com/93054393/187058095-9b7a2c98-68c9-4e02-95e2-637cb5e4246f.jpg" width="60%"></div>
-<div align="center"><i>Étape 3</i></div>
+<div align="center"><i>Step 3</i></div>
 
-       Étape 4 : Donnez votre "Nom du projet", puis cochez la case "J'accepte les conditions de Firebase" et enfin cliquez sur "Continuer"
+       Step 4: Provide your "Project Name", then check the box "I accept the Firebase terms" and finally click on "Continue".
 
 
 <div align="center"><img src="https://user-images.githubusercontent.com/93054393/187058101-86cf37e0-7774-4ab2-a0fd-40f08c249031.jpg" width="60%"></div>
-<div align="center"><i>Étape 4</i></div>
+<div align="center"><i>Step 4</i></div>
 
-       Étape 5 : Maintenant, une autre fenètre apparaîtra. Cliquez donc sur "Continuer".
+       Step 5: Now, another window will appear. So click on "Continue".
 
 <div align="center"><img src="https://user-images.githubusercontent.com/93054393/187058104-bdbd0dcf-b14a-4598-a18b-5d4829c62dc8.jpg" width="60%"></div>
-<div align="center"><i>Étape 5</i></div>
+<div align="center"><i>Step 5</i></div>
 
-       Étape 6 : Sélectionnez le "compte Google Analytics" crée à  l'aide de l'identifiant Gmail.
+       Step 6: Select the "Google Analytics account" created using the Gmail ID.
 
 
- Et puis cliquez sur "Créer un projet".
+ And then click on "Create a project".
 
 <div align="center"><img src="https://user-images.githubusercontent.com/93054393/187058106-4dd2a5c1-1cb2-4100-880a-767a3ce1d2f8.jpg" width="60%"></div>
-<div align="center"><i>Étape 6</i></div>
+<div align="center"><i>Step 6</i></div>
 
-       Étape 7 : Votre projet est maintenant prèt. Vous obtiendrez donc la fenètre suivante. Cliquez sur "Continuer".
+       Step 7: Your project is now ready. So you will get the following window. Click on "Continue".
 
 <div align="center"><img src="https://user-images.githubusercontent.com/93054393/187058114-c59688f0-3664-4a24-af5f-4d66f02a2df0.jpg" width="60%"></div>
-<div align="center"><i>Étape 7</i></div>
+<div align="center"><i>Step 7</i></div>
 
 
-       Étape 8 : Cliquez maintenant sur "Paramètres du projet".
+       Step 8: Now click on "Project settings".
 
 <div align="center"><img src="https://user-images.githubusercontent.com/93054393/187058118-35393205-ef48-4456-9a59-a70ee07f0ffb.jpg" width="60%"></div>
-<div align="center"><i>Étape 8</i></div>
+<div align="center"><i>Step 8</i></div>
 
-       Étape 9 :  Sous Paramètres du projet, cliquez sur "Comptes de service". Copiez la clé secrète ci-dessous. Le code est requis dans le code Arduino.
+       Step 9: Under Project settings, click on "Service accounts". Copy the secret key below. The code is required in the Arduino code.
 <div align="center"><img src="https://user-images.githubusercontent.com/93054393/187058120-8dda0747-74a4-49d6-8723-15b97d850e90.jpg" width="60%"></div>
-<div align="center"><i>Étape 9</i></div>
+<div align="center"><i>Step 9</i></div>
 
-       Étape 10 :  Cliquez sur "Créer une base de données".
+       Step 10: Click on "Create a database".
 <div align="center"><img src="https://user-images.githubusercontent.com/93054393/187058121-91717e1a-0e9b-4647-a5a6-80fbd5d65d57.jpg" width="60%"></div>
-<div align="center"><i>Étape 10</i></div>
+<div align="center"><i>Step 10</i></div>
 
-       Étape 11 :  Choisissez "Démarrer en mode test" puis cliquez sur "Suivant".
+       Step 11: Choose "Start in test mode" then click on "Next".
 
 <div align="center"><img src="https://user-images.githubusercontent.com/93054393/187058123-b9638ca5-385d-4e0b-b97c-0dcfce91339b.jpg" width="60%"></div>
-<div align="center"><i>Étape 11</i></div>
+<div align="center"><i>Step 11</i></div>
 
-       Étape 12 :  Cliquez maintenant sur "Terminé" et sur le côté gauche, cliquez sur "Base de données".
+       Step 12: Now click on "Done" and on the left side, click on "Database".
 
 
 <div align="center"><img src="https://user-images.githubusercontent.com/93054393/187058125-676c7e7e-5f4c-41f7-a902-15e9d52a1172.jpg" width="60%"></div>
-<div align="center"><i>Étape 12</i></div>
+<div align="center"><i>Step 12</i></div>
 
 
 
-       Étape 13 :  Sélectionnez l'option "Base de données en temps réel" dans la liste des bases de données.
+       Step 13: Select the "Realtime Database" option from the list of databases.
 
-## Remarque :
+## Note:
 
-Nous avons travaillé avec le compte du MakerLab avec une base de données nommé "KEEPER-CONNECT".
-
-
-
-
-
-
-       
-
+We worked with the MakerLab account with a database named "KEEPER-CONNECT".
